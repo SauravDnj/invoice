@@ -21,6 +21,7 @@ The demo runs on a hosted server, not your device. Desktop and self-hosted insta
 - [Requirements](./requirements.md)
 - [Desktop Installation](./desktop.md)
 - [Self-Hosting (Docker)](./docker.md)
+- [Self-Hosting (Vercel)](./vercel.md)
 - [Quick Start](./quick-start.md)
 
 After installation, create or open a database to begin managing invoices and quotes.

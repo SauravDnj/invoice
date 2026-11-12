@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "docusaurus-2",
+  "installCommand": "cd ../.. && SKIP_ELECTRON_REBUILD=true ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm ci",
+  "buildCommand": "node ../../node_modules/@docusaurus/core/bin/docusaurus.mjs build",
+  "outputDirectory": "build"
+}

@@ -55,3 +55,6 @@ dist-website
 apps/website/.docusaurus
 
 TEMPO
+# Vercel
+.vercel
+apps/website/build

@@ -245,14 +245,19 @@ export const Sidebar: FC = () => {
           isSelected: isSelected,
           onClick: onClickNavigate
         },
-        {
-          text: t('menuItems.logout'),
-          icon: <LogoutIcon />,
-          isToggle: false,
-          minHeight: 50,
-          isSelected: () => false,
-          onClick: handleLogoutClick
-        }
+        // Hosted deployments use one server-configured database, so there is no database session to leave.
+        ...(import.meta.env.VITE_HOSTED_DB === 'true'
+          ? []
+          : [
+              {
+                text: t('menuItems.logout'),
+                icon: <LogoutIcon />,
+                isToggle: false,
+                minHeight: 50,
+                isSelected: () => false,
+                onClick: handleLogoutClick
+              }
+            ])
       ]
     }
   ];

@@ -12,6 +12,20 @@ import { listDbLimiter } from '../utils/functions';
 const backendConfig = getBackendConfig();
 export const dbDir = path.resolve(process.cwd(), backendConfig.webserver.databaseDirectory);
 
+// Hosted mode has a single pre-configured database, so the database chooser endpoints
+// only need to acknowledge the request.
+export const initHostedDatabaseController = (app: Express) => {
+  app.get('/api/databases', (_req: Request, res: Response) => {
+    res.json({ success: true, data: [] });
+  });
+  app.post('/api/databases/test', (_req: Request, res: Response) => {
+    res.json({ success: true });
+  });
+  app.post('/api/databases', (_req: Request, res: Response) => {
+    res.json({ success: true });
+  });
+};
+
 export const initDatabaseController = (app: Express) => {
   app.get('/api/databases', listDbLimiter, async (_req: Request, res: Response) => {
     try {

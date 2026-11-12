@@ -11,7 +11,8 @@ const initialState: PageState = {
   isLoading: false,
   loadingCount: 0,
   loadingCursorCount: 0,
-  dbReady: false,
+  // Hosted deployments (e.g. Vercel) use one server-configured database, so there is nothing to choose.
+  dbReady: import.meta.env.VITE_HOSTED_DB === 'true',
   toasts: [],
   settings: undefined,
   clientSnapshotOptions: [],

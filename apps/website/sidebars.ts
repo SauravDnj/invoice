@@ -7,7 +7,13 @@ const sidebars: SidebarsConfig = {
       label: 'Installation',
       link: { type: 'doc', id: 'installation/index' },
       collapsible: false,
-      items: ['installation/requirements', 'installation/desktop', 'installation/docker', 'installation/quick-start']
+      items: [
+        'installation/requirements',
+        'installation/desktop',
+        'installation/docker',
+        'installation/vercel',
+        'installation/quick-start'
+      ]
     }
   ],
   guides: [

@@ -5,6 +5,7 @@ import type { FilterData } from '@invoice-builder/contracts';
 import { FilterType } from '@invoice-builder/contracts';
 
 import { getRequestDatabase } from '../database';
+import { isHostedMode } from '../hosted';
 
 export const parseFilter = (query: string | undefined): FilterData[] | undefined => {
   if (!query) return undefined;
@@ -37,6 +38,11 @@ export const parseFilter = (query: string | undefined): FilterData[] | undefined
 };
 
 export const requireDB = (req: Request, res: Response, next: NextFunction) => {
+  // Hosted mode has no browser sessions: hostedDatabaseMiddleware already attached the shared database.
+  if (isHostedMode()) {
+    if (req.db) return next();
+    return res.status(503).json({ success: false, message: undefined, key: 'error.noDatabase' });
+  }
   if (!req.sessionId) {
     return res.status(401).json({
       success: false,

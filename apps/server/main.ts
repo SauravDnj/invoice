@@ -3,8 +3,9 @@ import express, { type NextFunction, type Request, type Response } from 'express
 import { getBackendConfig } from '@invoice-builder/core/config';
 import { startCleanupScheduler, stopCleanupScheduler } from './cleanup';
 import { initControllers } from './controllers';
-import { initDatabaseController } from './controllers/database';
+import { initDatabaseController, initHostedDatabaseController } from './controllers/database';
 import { closeAllDatabases, getDatabaseKeyFromRequest, getRequestDatabase, registerSessionDatabase } from './database';
+import { getHostedDatabase, isHostedMode } from './hosted';
 import { authenticateSession, getSessionTokenFromRequest } from './session';
 import { createSessionAuthorizationLimiter } from './utils/functions';
 
@@ -67,12 +68,34 @@ export const databaseContextMiddleware = (req: Request, _res: Response, next: Ne
   next();
 };
 
+const databaseFreePaths = new Set(['/api/health', '/api/version']);
+
+export const hostedDatabaseMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  if (databaseFreePaths.has(req.path)) {
+    next();
+    return;
+  }
+  try {
+    req.db = await getHostedDatabase();
+  } catch (error) {
+    console.error('Hosted database unavailable:', error);
+    res.status(503).json({ success: false, message: (error as Error).message, key: 'error.noDatabase' });
+    return;
+  }
+  next();
+};
+
 app.use(createSessionAuthorizationLimiter());
-app.use(sessionDatabaseMiddleware);
-app.use(databaseContextMiddleware);
+if (isHostedMode()) {
+  app.use(hostedDatabaseMiddleware);
+} else {
+  app.use(sessionDatabaseMiddleware);
+  app.use(databaseContextMiddleware);
+}
 
 export const createApp = () => {
-  initDatabaseController(app);
+  if (isHostedMode()) initHostedDatabaseController(app);
+  else initDatabaseController(app);
   initControllers(app);
 
   app.get('/api/health', (_req: Request, res: Response) => {
@@ -102,7 +125,8 @@ const main = async () => {
   // });
 };
 
-if (backendConfig.nodeEnvironment !== 'test') {
+// On Vercel the app is exported as a serverless function (see api/index.ts) instead of listening.
+if (backendConfig.nodeEnvironment !== 'test' && !process.env.VERCEL) {
   main().catch(err => {
     console.error('Failed to start server:', err);
     process.exit(1);

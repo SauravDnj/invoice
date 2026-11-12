@@ -4,13 +4,18 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 const repositoryUrl = 'https://github.com/piratuks/invoice-builder';
 
+// GitHub Pages serves the site under /invoice-builder/; Vercel serves it from the domain root.
+const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+const siteUrl = process.env.DOCS_SITE_URL || (vercelHost ? `https://${vercelHost}` : 'https://piratuks.github.io');
+const siteBaseUrl = process.env.DOCS_BASE_URL || (process.env.VERCEL ? '/' : '/invoice-builder/');
+
 const config: Config = {
   title: 'Invoice Builder',
   tagline:
     'Offline-first, open-source invoicing for freelancers and small businesses who want full control of their data.',
   favicon: 'img/icon.png',
-  url: 'https://piratuks.github.io',
-  baseUrl: '/invoice-builder/',
+  url: siteUrl,
+  baseUrl: siteBaseUrl,
   stylesheets: [
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap',
     'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap'
