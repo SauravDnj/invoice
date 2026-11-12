@@ -1,24 +1,17 @@
 # Invoice Builder
 
-[![Docs](https://img.shields.io/badge/docs-piratuks.github.io-blue?logo=docusaurus&logoColor=white)](https://piratuks.github.io/invoice-builder/)
-[![License](https://img.shields.io/github/license/piratuks/invoice-builder)](LICENSE)
-[![Downloads](https://img.shields.io/github/downloads/piratuks/invoice-builder/total)](https://github.com/piratuks/invoice-builder/releases)
-[![Latest Release](https://img.shields.io/github/v/release/piratuks/invoice-builder)](https://github.com/piratuks/invoice-builder/releases)
+[![Docs](https://img.shields.io/badge/docs-invoice--docs--sauravdnj.vercel.app-blue?logo=docusaurus&logoColor=white)](https://invoice-docs-sauravdnj.vercel.app/)
+[![License](https://img.shields.io/github/license/SauravDnj/invoice)](LICENSE)
+[![Vercel](https://img.shields.io/badge/Vercel-deployed-black?logo=vercel&logoColor=white)](https://invoice-docs-sauravdnj.vercel.app/docs/installation/vercel/)
 ![Windows](https://img.shields.io/badge/Windows-10%2B-blue?logo=windows)
 ![Linux](https://img.shields.io/badge/Linux-DEB%20%7C%20AppImage-blue?logo=linux)
 ![macOS](https://img.shields.io/badge/macOS-DMG-lightgrey?logo=apple&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-blue?style=flat-square&logo=docker&logoColor=white)
-[![GHCR](https://img.shields.io/badge/ghcr.io-invoice--builder-blue?style=flat-square&logo=github)](https://github.com/piratuks/invoice-builder/pkgs/container/invoice-builder)
-[![GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ec5990?logo=github)](https://github.com/sponsors/piratuks)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FF813F?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/evaldizi)
+[![GHCR](https://img.shields.io/badge/ghcr.io-sauravdnj%2Finvoice-blue?style=flat-square&logo=github)](https://github.com/SauravDnj/invoice/pkgs/container/invoice)
 
-<!-- markdownlint-disable MD033 -->
+Invoice Builder is an **offline-first, open-source invoicing and quoting application** for freelancers and small businesses. No accounts, no cloud, no subscriptions - your data stays on your machine in a database file you own, with an optional self-hosted web/Docker mode for multi-device access, or a hosted web deployment on Vercel with PostgreSQL.
 
-<a href="https://trendshift.io/repositories/17939?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-17939" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/17939" alt="piratuks%2Finvoice-builder | Trendshift" width="250" height="55"/></a>
-<a href="https://trendshift.io/repositories/17939?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-17939" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/17939/daily?language=TypeScript" alt="piratuks%2Finvoice-builder | Trendshift" width="250" height="55"/></a>
-<!-- markdownlint-enable MD033 -->
-
-Invoice Builder is an **offline-first, open-source invoicing and quoting application** for freelancers and small businesses. No accounts, no cloud, no subscriptions - your data stays on your machine in a database file you own, with an optional self-hosted web/Docker mode for multi-device access.
+> This repository is based on [piratuks/invoice-builder](https://github.com/piratuks/invoice-builder) by Evaldas L., used under the MIT License. It adds a Vercel deployment mode (serverless API + hosted PostgreSQL).
 
 > **⚠️ One-time upgrade notice for version 3.0.2**
 > Before upgrading, back up each existing database and make sure it completed migrations through version 2.10.0. Version 3.0.2 initializes new databases from a consolidated schema and does not include the historical migration chain, so databases with incomplete migrations are not upgraded. This applies to Electron, manual, and web/Docker upgrades.
@@ -35,49 +28,43 @@ Invoice Builder is an **offline-first, open-source invoicing and quoting applica
 - Export invoices as UBL 2.1 / Peppol BIS Billing 3.0 or XRechnung XML for compliant e-invoicing
 - Native receipt printing (desktop) and browser print-to-PDF receipts (web/Docker)
 - Full database backup/restore, JSON export/import, and per-document data snapshots for historical accuracy
-- Runs as a desktop app (Windows, Linux, macOS) backed by SQLite, or self-hosted via Docker with SQLite or PostgreSQL
+- Runs as a desktop app (Windows, Linux, macOS) backed by SQLite, self-hosted via Docker with SQLite or PostgreSQL, or on Vercel with PostgreSQL
 
 ## Quick start
 
-**Try the demo:** [Open Invoice Builder in your browser](https://invoice-builder-sha-a014125.onrender.com) without installing anything.
+**Vercel:** deploy the web app with a hosted PostgreSQL database (for example Neon) and optional password protection. See [Self-Hosting (Vercel)](https://invoice-docs-sauravdnj.vercel.app/docs/installation/vercel/).
 
-> This public Docker demo runs on Render's free plan and may take a moment to wake up. Use fictional data only: databases may be accessible to other visitors and can disappear without notice. Do not upload real invoices, personal information, or database credentials. This demo is separate from desktop and self-hosted installations, which store data on your own device or configured server.
-
-**Desktop:** download the latest build for your platform from [Releases](https://github.com/piratuks/invoice-builder/releases).
+**Desktop:** this repository does not publish desktop builds yet. Download the latest desktop build from the original project's [Releases](https://github.com/piratuks/invoice-builder/releases).
 
 **Docker:**
 
 Install Git and Docker with the Compose plugin, then clone the repository to obtain the Compose file:
 
 ```bash
-git clone https://github.com/piratuks/invoice-builder.git
-cd invoice-builder
+git clone https://github.com/SauravDnj/invoice.git
+cd invoice
 docker compose pull
 docker compose up -d
 ```
 
-Then open [http://localhost:3001](http://localhost:3001) in your browser and create or connect a database. See [Quick Start](https://piratuks.github.io/invoice-builder/docs/installation/quick-start/) and [Self-Hosting (Docker)](https://piratuks.github.io/invoice-builder/docs/installation/docker/) for details.
+Then open [http://localhost:3001](http://localhost:3001) in your browser and create or connect a database. See [Quick Start](https://invoice-docs-sauravdnj.vercel.app/docs/installation/quick-start/) and [Self-Hosting (Docker)](https://invoice-docs-sauravdnj.vercel.app/docs/installation/docker/) for details.
 
 ## Documentation
 
-Full documentation is published at [piratuks.github.io/invoice-builder](https://piratuks.github.io/invoice-builder/):
+Full documentation is published at [invoice-docs-sauravdnj.vercel.app](https://invoice-docs-sauravdnj.vercel.app/):
 
-- [Installation](https://piratuks.github.io/invoice-builder/docs/installation/): requirements, desktop install, Docker self-hosting, quick start
-- [Guides](https://piratuks.github.io/invoice-builder/docs/guides/): screen-by-screen walkthrough, from database creation to layouts and e-invoices
-- [Development](https://piratuks.github.io/invoice-builder/docs/development/): running locally, project structure, core stack, database schema
+- [Installation](https://invoice-docs-sauravdnj.vercel.app/docs/installation/): requirements, desktop install, Docker and Vercel self-hosting, quick start
+- [Guides](https://invoice-docs-sauravdnj.vercel.app/docs/guides/): screen-by-screen walkthrough, from database creation to layouts and e-invoices
+- [Development](https://invoice-docs-sauravdnj.vercel.app/docs/development/): running locally, project structure, core stack, database schema
 
 ## Questions and ideas
 
-Bugs and feature requests go in [Issues](https://github.com/piratuks/invoice-builder/issues). Questions and general discussion go in [Discussions](https://github.com/piratuks/invoice-builder/discussions).
+Bugs, feature requests, and questions go in [Issues](https://github.com/SauravDnj/invoice/issues).
 
 ## Development
 
-Invoice Builder is an Electron + React app with an optional Node.js webserver, using SQLite or PostgreSQL for storage. See [Running Locally](https://piratuks.github.io/invoice-builder/docs/development/running-locally/) to set up a dev environment, and [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
+Invoice Builder is an Electron + React app with an optional Node.js webserver, using SQLite or PostgreSQL for storage. See [Running Locally](https://invoice-docs-sauravdnj.vercel.app/docs/development/running-locally/) to set up a dev environment, and [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
 
 ## License
 
-Invoice Builder is licensed under the [MIT License](LICENSE).
-
-## Support
-
-Invoice Builder is maintained by a single developer. If it saves you time, you can support its development through [GitHub Sponsors](https://github.com/sponsors/piratuks) or [Buy Me a Coffee](https://www.buymeacoffee.com/evaldizi).
+Invoice Builder is licensed under the [MIT License](LICENSE). Original work copyright (c) 2025 Evaldas L. ([piratuks/invoice-builder](https://github.com/piratuks/invoice-builder)).

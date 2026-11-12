@@ -11,26 +11,18 @@ This option is ideal if you want:
 - Centralized access from multiple machines
 - Easy backups via mounted volumes
 
-## Try before self-hosting
-
-[Open the public Docker demo](https://invoice-builder-sha-a014125.onrender.com) to try the app without installing it. It runs on Render's free plan and may take a moment to wake up.
-
-:::warning[Sample data only]
-Demo databases may be accessible to other visitors and can disappear without notice. Do not upload real invoices, personal information, or database credentials. The public demo is separate from your own Docker deployment, where data stays on your configured server or database.
-:::
-
 ## Docker Image
 
 A pre-built image is published automatically to GitHub Container Registry on every push to `main` and on every version tag:
 
 ```bash
-ghcr.io/piratuks/invoice-builder:latest
+ghcr.io/sauravdnj/invoice:latest
 ```
 
 Pull it at any time with:
 
 ```bash
-docker pull ghcr.io/piratuks/invoice-builder:latest
+docker pull ghcr.io/sauravdnj/invoice:latest
 ```
 
 :::info[`VITE_API_URL` is no longer needed for Docker deployments]
@@ -89,7 +81,7 @@ docker compose -f docker-compose.standalone.yml up -d
 Use a backslash (`\`) to continue the command on the next line:
 
 ```bash
-docker pull ghcr.io/piratuks/invoice-builder:latest
+docker pull ghcr.io/sauravdnj/invoice:latest
 
 docker run -d \
 	--name invoice-builder \
@@ -102,7 +94,7 @@ docker run -d \
 	-e FE_SERVER_URL=http://localhost:3001 \
 	-e MIGRATIONS_PATH=/app/dist-migrations \
 	-v invoice-builder-data:/app-data \
-	ghcr.io/piratuks/invoice-builder:latest
+	ghcr.io/sauravdnj/invoice:latest
 ```
 
 ### PowerShell (Windows)
@@ -110,7 +102,7 @@ docker run -d \
 Use a backtick (`` ` ``) to continue the command on the next line:
 
 ```powershell
-docker pull ghcr.io/piratuks/invoice-builder:latest
+docker pull ghcr.io/sauravdnj/invoice:latest
 
 docker run -d `
 	--name invoice-builder `
@@ -123,7 +115,7 @@ docker run -d `
 	-e FE_SERVER_URL=http://localhost:3001 `
 	-e MIGRATIONS_PATH=/app/dist-migrations `
 	-v invoice-builder-data:/app-data `
-	ghcr.io/piratuks/invoice-builder:latest
+	ghcr.io/sauravdnj/invoice:latest
 ```
 
 The continuation character must be the last character on its line, with no trailing spaces.

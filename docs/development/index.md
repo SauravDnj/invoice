@@ -15,4 +15,4 @@ Guides for running Invoice Builder locally and understanding its codebase.
 
 ## Sample Data
 
-[backup.json](https://github.com/piratuks/invoice-builder/blob/main/docs/development/backup.json) is an example full-database backup/export. Import it via **Settings > Import** to quickly populate a database with sample data for manual testing.
+[backup.json](https://github.com/SauravDnj/invoice/blob/main/docs/development/backup.json) is an example full-database backup/export. Import it via **Settings > Import** to quickly populate a database with sample data for manual testing.

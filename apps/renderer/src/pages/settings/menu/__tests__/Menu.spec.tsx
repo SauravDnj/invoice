@@ -114,23 +114,14 @@ describe('settings Menu', () => {
     mocks.isWebMode.mockReturnValue(false);
     renderMenu(<Menu />, Themes.dark);
 
-    for (const key of [
-      'share',
-      'tutorial',
-      'support',
-      'privacyPolicy',
-      'about',
-      'githubSponsors',
-      'buyMeCoffee',
-      'wallOfFame'
-    ]) {
+    for (const key of ['share', 'tutorial', 'support', 'privacyPolicy', 'about']) {
       const menuItem = item(`settingsMenuItems.titles.${key}`);
       menuItem.onClick?.(menuItem);
     }
     const updateItem = item('settingsMenuItems.titles.checkForUpdate');
     act(() => updateItem.onClick?.(updateItem));
 
-    expect(mocks.openUrl).toHaveBeenCalledTimes(8);
+    expect(mocks.openUrl).toHaveBeenCalledTimes(5);
     expect(mocks.checkForUpdates).toHaveBeenCalledTimes(1);
   });
 

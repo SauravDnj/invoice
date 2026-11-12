@@ -9,7 +9,7 @@
 
 services:
   backend:
-    image: ghcr.io/piratuks/invoice-builder:latest
+    image: ghcr.io/sauravdnj/invoice:latest
     # To build locally instead of pulling, uncomment the line below and remove the image: line above:
     # build: .
     extra_hosts:
@@ -55,7 +55,7 @@ services:
       start_period: 10s
 
   frontend:
-    image: ghcr.io/piratuks/invoice-builder:latest
+    image: ghcr.io/sauravdnj/invoice:latest
     # To build locally instead of pulling, uncomment below and remove the image: line above:
     # build: .
     # build:

@@ -2,12 +2,13 @@ import type * as Preset from '@docusaurus/preset-classic';
 import type { Config } from '@docusaurus/types';
 import { themes as prismThemes } from 'prism-react-renderer';
 
-const repositoryUrl = 'https://github.com/piratuks/invoice-builder';
+const repositoryUrl = 'https://github.com/SauravDnj/invoice';
 
-// GitHub Pages serves the site under /invoice-builder/; Vercel serves it from the domain root.
-const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
-const siteUrl = process.env.DOCS_SITE_URL || (vercelHost ? `https://${vercelHost}` : 'https://piratuks.github.io');
-const siteBaseUrl = process.env.DOCS_BASE_URL || (process.env.VERCEL ? '/' : '/invoice-builder/');
+// The docs are published on Vercel from the domain root. GitHub Pages (pages.yml) serves
+// project sites under /<repository>/, so it uses the github.io host with the /invoice/ base path.
+const vercelDocsUrl = 'https://invoice-docs-sauravdnj.vercel.app';
+const siteUrl = process.env.DOCS_SITE_URL || (process.env.VERCEL ? vercelDocsUrl : 'https://sauravdnj.github.io');
+const siteBaseUrl = process.env.DOCS_BASE_URL || (process.env.VERCEL ? '/' : '/invoice/');
 
 const config: Config = {
   title: 'Invoice Builder',
@@ -30,7 +31,7 @@ const config: Config = {
     hooks: { onBrokenMarkdownLinks: 'throw', onBrokenMarkdownImages: 'throw' }
   },
   customFields: { repositoryUrl },
-  organizationName: 'piratuks',
+  organizationName: 'SauravDnj',
   projectName: 'Invoice Builder',
   themes: [
     [
@@ -98,12 +99,11 @@ const config: Config = {
           title: 'Project',
           items: [
             { label: 'Features', to: '/#features' },
-            { label: 'Releases', href: `${repositoryUrl}/releases` },
+            { label: 'Desktop releases', href: 'https://github.com/piratuks/invoice-builder/releases' },
             { label: 'Issues', href: `${repositoryUrl}/issues` },
-            { label: 'Discussions', href: `${repositoryUrl}/discussions` },
             { label: 'Source code', href: repositoryUrl },
-            { label: 'Supporters', to: '/docs/supporters' },
-            { label: 'Contact us', href: 'https://github.com/piratuks' }
+            { label: 'Original project', href: 'https://github.com/piratuks/invoice-builder' },
+            { label: 'Contact us', href: 'https://github.com/SauravDnj' }
           ]
         }
       ],

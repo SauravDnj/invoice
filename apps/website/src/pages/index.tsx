@@ -101,12 +101,12 @@ export default function HomePage() {
                 <Link className="home-button home-button--quiet" to="/docs/guides/">
                   Explore the guides
                 </Link>
-                <Link className="home-button home-button--quiet" to="/docs/installation/#try-the-live-demo">
-                  Try demo
+                <Link className="home-button home-button--quiet" to="/docs/installation/vercel/">
+                  Deploy on Vercel
                 </Link>
               </div>
               <p className="home-hero__aside">
-                Free and open source <span>·</span> Desktop or self-hosted
+                Free and open source <span>·</span> Desktop, self-hosted, or Vercel
               </p>
             </div>
             <figure className="home-hero__visual">
@@ -232,9 +232,7 @@ export default function HomePage() {
               Find your setup <span aria-hidden="true">↗</span>
             </Link>
             <p className="home-hero__aside">
-              Enjoying Invoice Builder? Support it via{' '}
-              <Link to="https://github.com/sponsors/piratuks">GitHub Sponsors</Link> or{' '}
-              <Link to="https://www.buymeacoffee.com/evaldizi">Buy Me a Coffee</Link>.
+              Based on <Link to="https://github.com/piratuks/invoice-builder">piratuks/invoice-builder</Link> (MIT).
             </p>
           </div>
         </section>

@@ -11,8 +11,8 @@ Clone the repository, install dependencies, and start the development server:
 ## Electron (Desktop App)
 
 ```bash
-git clone https://github.com/piratuks/invoice-builder.git
-cd invoice-builder
+git clone https://github.com/SauravDnj/invoice.git
+cd invoice
 npm install
 npm run dev:desktop
 ```
@@ -20,8 +20,8 @@ npm run dev:desktop
 ## Webserver / Browser
 
 ```bash
-git clone https://github.com/piratuks/invoice-builder.git
-cd invoice-builder
+git clone https://github.com/SauravDnj/invoice.git
+cd invoice
 npm install
 npm run dev:renderer
 npm run dev:webserver

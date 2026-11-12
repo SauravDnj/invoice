@@ -4,7 +4,7 @@ title: Desktop Installation
 
 # Desktop Installation
 
-Download the latest release from the **GitHub Releases** page:
+Download the latest release from the **GitHub Releases** page. This repository does not publish desktop builds yet, so desktop builds come from the original [piratuks/invoice-builder](https://github.com/piratuks/invoice-builder) project:
 
 [Download Latest Release](https://github.com/piratuks/invoice-builder/releases)
 

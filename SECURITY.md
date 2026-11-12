@@ -6,7 +6,7 @@ Security fixes are provided for the latest released version of Invoice Builder a
 
 ## Reporting a Vulnerability
 
-Please report suspected vulnerabilities privately through [GitHub Security Advisories](https://github.com/piratuks/invoice-builder/security/advisories/new). Do not open a public issue for an unpatched security vulnerability.
+Please report suspected vulnerabilities privately through [GitHub Security Advisories](https://github.com/SauravDnj/invoice/security/advisories/new). Do not open a public issue for an unpatched security vulnerability.
 
 Include the following information when available:
 

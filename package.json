@@ -29,11 +29,11 @@
     "xrechnung"
   ],
   "bugs": {
-    "url": "https://github.com/piratuks/invoice-builder/issues"
+    "url": "https://github.com/SauravDnj/invoice/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/piratuks/invoice-builder.git"
+    "url": "git://github.com/SauravDnj/invoice.git"
   },
   "license": "MIT",
   "workspaces": [
