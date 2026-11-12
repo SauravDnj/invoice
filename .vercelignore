@@ -1,0 +1,24 @@
+# Keep CLI deploys (`vercel deploy`) equivalent to Git deploys: upload source only.
+# Local runtime data and secrets
+app-data
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env*.example
+
+# Generated build output (Vercel rebuilds these)
+dist-renderer
+dist-desktop
+dist-server
+dist-migrations
+dist-website
+release
+packages/*/dist
+apps/website/.docusaurus
+apps/website/build
+
+# Test output
+test-results
+playwright-report
+coverage

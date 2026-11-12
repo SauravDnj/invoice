@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { Client } from 'pg';
-import sqlite3 from 'sqlite3';
+import type { Database as SqliteDatabase } from 'sqlite3';
 import type { PostgresConfig } from '@invoice-builder/contracts';
 import { DatabaseType } from '@invoice-builder/contracts';
 
@@ -111,7 +111,11 @@ export const openSqlLite = async (data: {
     }
   }
 
-  const db = await new Promise<sqlite3.Database>((resolve, reject) => {
+  // Load the native sqlite3 module only when a SQLite database is opened: Postgres-only
+  // runtimes (e.g. Vercel, whose glibc is older than the prebuilt binary needs) never load it.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const sqlite3: typeof import('sqlite3') = require('sqlite3');
+  const db = await new Promise<SqliteDatabase>((resolve, reject) => {
     const database = new sqlite3.Database(fullPath, err => {
       if (err) {
         reject(new Error(`error.failedToOpenDB`));

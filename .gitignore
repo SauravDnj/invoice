@@ -58,3 +58,4 @@ TEMPO
 # Vercel
 .vercel
 apps/website/build
+.env*.local
